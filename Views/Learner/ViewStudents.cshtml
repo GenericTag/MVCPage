@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LearnerMVC.Models.StudentModel>
+
+@{
+    ViewBag.Title = "ViewStudents";
+}
+
+<h2>ViewStudents</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateStudent")
+</p>
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Student_IDX)
+        </td>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAlive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_IDX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAlive)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "EditStudent", new { StudentID = item.Student_IDX }, new { @class = "glyphicon glyphicon-edit" }) |
+            @Html.ActionLink(" ", "ViewStudent", new { StudentID = item.Student_IDX }, new { @class = "glyphicon glyphicon-info-sign" }) |
+            @Html.ActionLink(" ", "DeleteStudent", new { StudentID = item.Student_IDX }, new { onclick = "return confirm('Are you sure you wish to delete this Student?')", @class = "glyphicon glyphicon-trash" })
+
+        </td>
+    </tr>
+}
+
+</table>
